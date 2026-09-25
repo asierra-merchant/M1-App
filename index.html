@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Merchant First Reconciliation</title>
+<link rel="stylesheet" href="_style.css"></head><body>
+
+<h1>Merchant First Reconciliation</h1>
+<p class="meta">An internal accounting tool of Merchant First LLC.</p>
+
+<h2>What it does</h2>
+<p>Merchant First Reconciliation prepares monthly bank reconciliation workpapers
+for Merchant First LLC and its affiliated entities. It reads bank statements and
+bank transaction exports, retrieves the corresponding transaction detail from
+QuickBooks Online, and produces a reconciliation workbook for each bank account
+showing the book balance rolled forward against the balance reported by the
+bank, together with a list of differences.</p>
+
+<h2>Who uses it</h2>
+<p>The application is used solely by employees and engaged professionals of
+Merchant First LLC and its affiliated entities, working on those entities' own
+books. It is not distributed to the public, offered for sale, or made available
+to any other organization.</p>
+
+<h2>How it connects to QuickBooks Online</h2>
+<p>The application connects to QuickBooks Online through Intuit's published
+API using OAuth 2.0, under the <code>com.intuit.quickbooks.accounting</code>
+scope. It <strong>reads</strong> transaction and account data. It does not
+create, modify or delete anything in QuickBooks Online. QuickBooks Online
+remains the system of record; this application produces workpapers from it.</p>
+
+<h2>Documents</h2>
+<p><a href="eula.html">End-User License Agreement</a><br>
+<a href="privacy.html">Privacy Policy</a></p>
+
+<footer>Merchant First LLC &middot; Contact: <span class="fill">[asierra@merchantfirst.net]</span></footer>
+</body></html>

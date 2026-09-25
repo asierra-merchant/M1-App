@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Connecting to QuickBooks Online &mdash; Merchant First Reconciliation</title>
+<link rel="stylesheet" href="_style.css"></head><body>
+
+<h1>Connecting to QuickBooks Online</h1>
+<p class="meta">Merchant First Reconciliation</p>
+
+<p>Merchant First Reconciliation is an internal accounting tool of Merchant
+First LLC. It is installed and run on company-managed computers by employees
+and engaged professionals of Merchant First and its affiliated entities. It is
+not distributed publicly and has no customer sign-up.</p>
+
+<h2>How a company file is connected</h2>
+<p>An authorized user runs the application's <code>connect</code> command on
+the computer where the application is installed. The application opens
+Intuit's own authorization page in the user's browser. The user signs in to
+QuickBooks Online there &mdash; the application never sees the username or
+password &mdash; and selects the company file to authorize.</p>
+<p>Intuit returns an authorization code to the application, which exchanges it
+for access and refresh tokens. Those tokens are stored in a file on that
+computer, readable only by that user account. Each company file is connected
+separately.</p>
+
+<h2>What access is granted</h2>
+<p>Read access under the <code>com.intuit.quickbooks.accounting</code> scope,
+used to retrieve the chart of accounts and bank transaction detail. The
+application does not create, modify or delete anything in QuickBooks Online.</p>
+
+<h2>Reconnecting</h2>
+<p>If a connection lapses &mdash; because the refresh token expired, access was
+revoked, or the token file was removed &mdash; the same <code>connect</code>
+command is run again and the authorization is repeated.</p>
+
+<h2>Disconnecting</h2>
+<p>See <a href="disconnect.html">how to disconnect</a>.</p>
+
+<footer>Merchant First LLC &middot;
+<a href="index.html">About the application</a> &middot;
+<a href="privacy.html">Privacy Policy</a> &middot;
+<a href="eula.html">License Agreement</a></footer>
+</body></html>

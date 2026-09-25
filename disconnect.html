@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Disconnecting from QuickBooks Online &mdash; Merchant First Reconciliation</title>
+<link rel="stylesheet" href="_style.css"></head><body>
+
+<h1>Disconnecting from QuickBooks Online</h1>
+<p class="meta">Merchant First Reconciliation</p>
+
+<p>Access granted to Merchant First Reconciliation can be withdrawn at any
+time, by either of the steps below. Either one is sufficient; doing both is
+the complete cleanup.</p>
+
+<h2>1. Revoke access in QuickBooks Online</h2>
+<p>In QuickBooks Online, open <strong>Settings</strong> (the gear icon) &rarr;
+<strong>Apps</strong>, find <em>Merchant First Reconciliation</em> in the list
+of connected apps, and choose <strong>Disconnect</strong>. This invalidates the
+application's tokens for that company file immediately. The application can
+make no further calls against it until it is authorized again.</p>
+
+<h2>2. Remove the stored tokens</h2>
+<p>On the computer where the application is installed, delete the token file
+in the application's <code>secrets</code> folder. This removes the stored
+credentials from that machine.</p>
+
+<h2>What happens to data already retrieved</h2>
+<p>Disconnecting stops any further retrieval. Reconciliation workpapers already
+produced are accounting records of Merchant First and are retained under the
+same records-retention policy that covers the underlying bank statements and
+books. See the <a href="privacy.html">Privacy Policy</a>.</p>
+
+<h2>Reconnecting later</h2>
+<p>See <a href="connect.html">how to connect</a>.</p>
+
+<footer>Merchant First LLC &middot;
+<a href="index.html">About the application</a> &middot;
+<a href="privacy.html">Privacy Policy</a> &middot;
+<a href="eula.html">License Agreement</a></footer>
+</body></html>

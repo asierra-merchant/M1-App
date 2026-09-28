@@ -18,10 +18,14 @@ of connected apps, and choose <strong>Disconnect</strong>. This invalidates the
 application's tokens for that company file immediately. The application can
 make no further calls against it until it is authorized again.</p>
 
-<h2>2. Remove the stored tokens</h2>
-<p>On the computer where the application is installed, delete the token file
-in the application's <code>secrets</code> folder. This removes the stored
-credentials from that machine.</p>
+<h2>2. Disconnect from the application</h2>
+<p>On the computer where the application is installed, run:</p>
+<p><code>py -m bankrec.qbo disconnect "&lt;company name&gt;"</code></p>
+<p>This hands the grant back to Intuit &mdash; revoking the refresh token
+invalidates the whole authorization, access token included &mdash; and removes
+the stored credentials from that machine. If Intuit cannot be reached, the
+local token is still removed and the command says so, so that the
+authorization can be ended in QuickBooks instead.</p>
 
 <h2>What happens to data already retrieved</h2>
 <p>Disconnecting stops any further retrieval. Reconciliation workpapers already

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Authorization complete &mdash; Merchant First Reconciliation</title>
+<link rel="stylesheet" href="_style.css">
+<style>
+ #box{margin:1.5em 0;padding:1em;border:1px solid #ccc;border-radius:6px;
+      background:#fafafa;word-break:break-all;font-family:ui-monospace,Consolas,monospace;
+      font-size:.85em;line-height:1.5}
+ button{font:inherit;padding:.5em 1.1em;border:1px solid #0b5fa5;background:#0b5fa5;
+        color:#fff;border-radius:5px;cursor:pointer}
+ button:hover{background:#094a82}
+ #done{color:#1a7f37;font-weight:600;margin-left:.75em}
+ .warn{background:#fff3cd;padding:1em;border-radius:6px}
+</style></head><body>
+
+<h1 id="head">Authorization complete</h1>
+<p class="meta">Merchant First Reconciliation</p>
+
+<div id="ok">
+<p>Copy the address below and paste it back into the command window that is
+waiting for it, then press Enter.</p>
+
+<div id="box">loading&hellip;</div>
+<p><button id="copy" type="button">Copy address</button><span id="done"></span></p>
+
+<p>You can close this tab afterwards. The authorization code in that address
+can only be used once, expires within minutes, and is useless without the
+application's own secret.</p>
+</div>
+
+<div id="bad" class="warn" hidden>
+<p id="badmsg"></p>
+<p>Nothing has been connected. Run the <code>connect</code> command again to
+start over.</p>
+</div>
+
+<h2>What this page is</h2>
+<p>A landing point, nothing more. Intuit requires that an application
+authorized against live QuickBooks data return to a real web address rather
+than to the computer running the application, so this page catches that return
+and hands the address back to you.</p>
+<p>This page is plain HTML. It has no server behind it, stores nothing, and
+sends nothing anywhere &mdash; the address is only ever shown to you, in your
+own browser.</p>
+
+<footer>Merchant First LLC &middot;
+<a href="index.html">About the application</a> &middot;
+<a href="connect.html">How connecting works</a> &middot;
+<a href="privacy.html">Privacy Policy</a></footer>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var err = params.get("error");
+  if (err || !params.get("code")) {
+    document.getElementById("ok").hidden = true;
+    document.getElementById("bad").hidden = false;
+    document.getElementById("head").textContent =
+      err ? "Authorization was not completed" : "Nothing to copy";
+    document.getElementById("badmsg").textContent = err
+      ? "QuickBooks reported: " + err +
+        (params.get("error_description")
+          ? " — " + params.get("error_description") : "")
+      : "This page was opened directly rather than by QuickBooks, so there is "
+        + "no authorization to hand back.";
+    return;
+  }
+  var addr = window.location.href;
+  document.getElementById("box").textContent = addr;
+  document.getElementById("copy").addEventListener("click", function () {
+    var done = document.getElementById("done");
+    function ok() { done.textContent = "Copied"; }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(addr).then(ok, fallback);
+    } else { fallback(); }
+    function fallback() {
+      var r = document.createRange();
+      r.selectNodeContents(document.getElementById("box"));
+      var sel = window.getSelection();
+      sel.removeAllRanges(); sel.addRange(r);
+      try { document.execCommand("copy"); ok(); }
+      catch (e) { done.textContent = "Select the address above and copy it"; }
+    }
+  });
+})();
+</script>
+</body></html>
